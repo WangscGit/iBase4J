@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ibase4j</groupId>
@@ -26,7 +27,7 @@
 		<module.name>${project.artifactId}</module.name>
 		<!-- 编码 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<ibase4j.version>3.4.2</ibase4j.version>
+		<ibase4j.version>3.4.4</ibase4j.version>
 		<spring-boot.version>2.0.2.RELEASE</spring-boot.version>
 		<!-- spring版本号 -->
 		<spring.version>5.0.6.RELEASE</spring.version>
@@ -47,6 +48,7 @@
 		<fastjson.version>1.2.47</fastjson.version>
 		<motan.version>1.1.1</motan.version>
 		<!-- -->
+		<netty-version>4.1.25.Final</netty-version>
 		<lettuce.version>5.0.4.RELEASE</lettuce.version>
 		<okhttp.version>3.10.0</okhttp.version>
 		<mail.version>1.6.1</mail.version>
@@ -207,14 +209,53 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- netty -->
+		<dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-common</artifactId>
+            <version>${netty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec</artifactId>
+            <version>${netty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-buffer</artifactId>
+            <version>${netty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport</artifactId>
+            <version>${netty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+            <version>${netty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-resolver-dns</artifactId>
+            <version>${netty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec-dns</artifactId>
+            <version>${netty-version}</version>
+        </dependency>
 		<!-- 缓存 -->
 		<dependency>
 			<groupId>io.lettuce</groupId>
 			<artifactId>lettuce-core</artifactId>
-			<version>${lettuce.version}</version>
+            <version>${lettuce.version}</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.redisson</groupId> <artifactId>redisson</artifactId> 
-			<version>${redisson.version}</version> </dependency> -->
+		<dependency>
+			<groupId>org.redisson</groupId>
+			<artifactId>redisson</artifactId>
+			<version>${redisson.version}</version>
+		</dependency>
 		<!-- 切面 -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -266,11 +307,8 @@
 			<version>${log4j.version}</version>
 		</dependency>
 		<!-- -->
-		<!-- <dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>${javassist.version}</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.javassist</groupId> <artifactId>javassist</artifactId> 
+			<version>${javassist.version}</version> </dependency> -->
 		<!-- Dubbo -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -506,6 +544,11 @@
 		</resources>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
