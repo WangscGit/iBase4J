@@ -6,7 +6,8 @@ import top.ibase4j.core.base.BaseMapper;
 
 /**
  * <p>
- * Mapper接口欣欣
+ * Mapper接口欣欣 * Mapper接口欣欣
+
  * </p>
  *
  * @author ShenHuaJie
