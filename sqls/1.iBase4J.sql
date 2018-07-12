@@ -82,9 +82,9 @@ CREATE TABLE IF NOT EXISTS `sys_dic` (
   `enable_` tinyint(1) NOT NULL DEFAULT '1',
   `remark_` varchar(500) DEFAULT NULL,
   `create_by` bigint(20) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL,
   `update_by` bigint(20) NOT NULL,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL,
   PRIMARY KEY (`id_`),
   UNIQUE KEY `type__code_` (`type_`,`code_`),
 	INDEX `parent_type` (`parent_type`),
@@ -220,8 +220,7 @@ CREATE TABLE IF NOT EXISTS `sys_event` (
 	INDEX `request_uri` (`request_uri`),
 	INDEX `client_host` (`client_host`),
 	INDEX `create_by` (`create_by`),
-	INDEX `create_time` (`create_time`),
-	FULLTEXT INDEX `parameters_` (`parameters_`)
+	INDEX `create_time` (`create_time`)
 ) ENGINE=InnoDB;
 
 -- 正在导出表  ibase4j.sys_event 的数据：~0 rows (大约)
@@ -243,7 +242,7 @@ CREATE TABLE `sys_feedback` (
 	`update_by` BIGINT(20) NULL DEFAULT NULL,
 	`update_time` DATETIME NULL DEFAULT NULL,
 	PRIMARY KEY (`id_`)
-)COMMENT='反馈' COLLATE=utf8 ENGINE=InnoDB;
+)COMMENT='反馈' ENGINE=InnoDB;
 
 -- 导出  表 ibase4j.sys_menu 结构
 DROP TABLE IF EXISTS `sys_menu`;
@@ -261,9 +260,9 @@ CREATE TABLE IF NOT EXISTS `sys_menu` (
   `remark_` varchar(100) DEFAULT NULL COMMENT '备注',
   `enable_` tinyint(1) DEFAULT '1',
   `create_by` bigint(20) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL,
   `update_by` bigint(20) NOT NULL,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL,
   PRIMARY KEY (`id_`),
 	INDEX `menu_name` (`menu_name`),
 	INDEX `parent_id` (`parent_id`)
@@ -401,9 +400,9 @@ CREATE TABLE IF NOT EXISTS `sys_role` (
   `enable_` tinyint(1) NOT NULL DEFAULT '1',
   `remark_` varchar(100) DEFAULT NULL COMMENT '备注',
   `create_by` bigint(20) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL,
   `update_by` bigint(20) NOT NULL,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL,
   PRIMARY KEY (`id_`)
 ) ENGINE=InnoDB COMMENT='角色信息表';
 
@@ -423,9 +422,9 @@ CREATE TABLE IF NOT EXISTS `sys_role_menu` (
   `enable_` tinyint(1) NOT NULL DEFAULT '1',
   `remark_` varchar(5000) DEFAULT NULL,
   `create_by` bigint(20) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL,
   `update_by` bigint(20) NOT NULL,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL,
   PRIMARY KEY (`id_`),
   UNIQUE KEY `sys_role_menu_key1` (`role_id`,`menu_id`,`permission_`)
 ) ENGINE=InnoDB COMMENT='角色授权表';
@@ -525,9 +524,9 @@ CREATE TABLE IF NOT EXISTS `sys_user_menu` (
   `enable_` tinyint(1) NOT NULL DEFAULT '1',
   `remark_` varchar(5000) DEFAULT NULL,
   `create_by` bigint(20) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL,
   `update_by` bigint(20) NOT NULL,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL,
   PRIMARY KEY (`id_`),
   UNIQUE KEY `sys_user_menu_key1` (`user_id`,`menu_id`,`permission_`)
 ) ENGINE=InnoDB COMMENT='用户授权表';
@@ -547,9 +546,9 @@ CREATE TABLE IF NOT EXISTS `sys_user_role` (
   `enable_` tinyint(1) NOT NULL DEFAULT '1',
   `remark_` varchar(5000) DEFAULT NULL,
   `create_by` bigint(20) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL,
   `update_by` bigint(20) NOT NULL,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL,
   PRIMARY KEY (`id_`),
   UNIQUE KEY `user_id_role_id` (`user_id`,`role_id`)
 ) ENGINE=InnoDB COMMENT='用户授权表';
@@ -601,7 +600,7 @@ CREATE TABLE `sys_lock` (
   `key_` varchar(256) NOT NULL,
   `name_` varchar(128) NOT NULL,
   `expire_second` int(6) NOT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL,
   PRIMARY KEY (`key_`),
   INDEX `expire_second` (`expire_second`),
   INDEX `create_time` (`create_time`)

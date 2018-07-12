@@ -11,6 +11,9 @@
 	<url>http://maven.apache.org</url>
 
 	<modules>
+	    <module>iBase4J-XX-Service</module>
+		<module>iBase4J-XX-Facade</module>
+		<module>iBase4J-XX-Web</module>
 		<module>iBase4J-SYS-Service</module>
 		<module>iBase4J-SYS-Facade</module>
 		<module>iBase4J-SYS-Web</module>
